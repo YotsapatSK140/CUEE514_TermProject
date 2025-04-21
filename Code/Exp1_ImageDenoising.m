@@ -73,13 +73,13 @@ fig1 = figure; % Create a new figure.  Use separate figures for organization.
 t = tiledlayout(3, 4, 'TileSpacing', 'compact', 'Padding', 'compact'); % Create a tiled layout.
 
 % Display original and noisy images
-nexttile; imshow(x_true, []); title('Original'); axis off;       % Original image (ground truth).
-nexttile; imshow(reshape(y, imageSize, imageSize), []); title('Noisy'); axis off; % Noisy blurred image.
+nexttile; imshow(x_true); title('Original'); axis off;       % Original image (ground truth).
+nexttile; imshow(reshape(y, imageSize, imageSize)); title('Noisy'); axis off; % Noisy blurred image.
 
 % Display reconstructed images
 for i = 1:length(results)
     nexttile;
-    imshow(results{i}, []);
+    imshow(results{i});
     title(alg_names{i}, 'Interpreter', 'latex'); % Use LaTeX for title formatting (consistent).
     axis off;
 end

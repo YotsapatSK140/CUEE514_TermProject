@@ -56,7 +56,7 @@ x_vec = x_true(:);       % Flatten the true image into a column vector.  Consist
 y_vec = reshape(y, [], 1); % Flatten the noisy sinogram into a column vector.  Consistent with operator definitions.
 
 % Algorithms to run
-algorithms = {@PCD, @PCD_CG, @PCD_SESOP, @SESOP, @SSF, @SSF_CG, @SSF-SESOP, @FISTA};
+algorithms = {@PCD, @PCD_CG, @PCD_SESOP, @SESOP, @SSF, @SSF_CG, @SSF_SESOP, @FISTA};
 % Cell array containing function handles to different sparse recovery algorithms.
 alg_names = {'PCD', 'PCD-CG', 'PCD-SESOP', 'SESOP', 'SSF', 'SSF-CG', 'SSF-SESOP', 'FISTA'};
 % Cell array of strings containing the names of the algorithms (for plotting).  Good practice.
@@ -91,14 +91,14 @@ fig1 = figure; % Create a new figure.
 t = tiledlayout(3, 4, 'TileSpacing', 'compact', 'Padding', 'compact'); % 3x4 tiled layout for images.
 
 % Display original image and backprojection
-nexttile; imshow(x_true, []); title('Original'); axis off;  % Original phantom image.
-nexttile; imshow(rescale(RT_op(y)), []); title('Backprojection'); axis off; % Simple backprojection (iradon without optimization).
+nexttile; imshow(x_true); title('Original'); axis off;  % Original phantom image.
+nexttile; imshow(rescale(RT_op(y))); title('Backprojection'); axis off; % Simple backprojection (iradon without optimization).
                                                                          % Rescale to [0,1] for proper display.  Important baseline.
 
 % Display reconstructed images from each algorithm
 for i = 1:length(results)
     nexttile;
-    imshow(results{i}, []);
+    imshow(results{i});
     title(alg_names{i}, 'Interpreter', 'latex'); % Use LaTeX for consistent title formatting.
     axis off;
 end

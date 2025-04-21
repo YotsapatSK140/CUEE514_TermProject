@@ -57,7 +57,7 @@ At = @(z) H' * z;  % The adjoint (transpose) operator At is matrix multiplicatio
                     %  For real-valued H, H' is the same as the transpose of H.
 
 % Algorithm list
-algorithms = {@PCD, @PCD_CG, @PCD_SESOP, @SESOP, @SSF, @SSF-CG, @SSF-SESOP, @FISTA};
+algorithms = {@PCD, @PCD_CG, @PCD_SESOP, @SESOP, @SSF, @SSF_CG, @SSF_SESOP, @FISTA};
 % Cell array of function handles to the different sparse recovery algorithms being tested.
 alg_names = {'PCD', 'PCD-CG', 'PCD-SESOP', 'SESOP', 'SSF', 'SSF-CG', 'SSF-SESOP', 'FISTA'};
 % Cell array of corresponding algorithm names for plotting and display.

@@ -41,7 +41,7 @@ noise_level = 0.01;                  % Set the noise level (standard deviation o
 y = y_clean + noise_level * randn(size(y_clean)); % Add Gaussian noise to the measurements.  randn generates normally distributed random numbers.
 
 % Algorithms to be used for reconstruction
-algorithms = {@PCD, @PCD_CG, @PCD_SESOP, @SESOP, @SSF, @SSF_CG, @SSF-SESOP, @FISTA}; % Cell array of function handles to different algorithms.
+algorithms = {@PCD, @PCD_CG, @PCD_SESOP, @SESOP, @SSF, @SSF_CG, @SSF_SESOP, @FISTA}; % Cell array of function handles to different algorithms.
 alg_names = {'PCD', 'PCD-CG', 'PCD-SESOP', 'SESOP', 'SSF', 'SSF-CG', 'SSF-SESOP', 'FISTA'}; % Cell array of corresponding algorithm names (for plotting and display)
 
 % Preallocate memory to store results
@@ -71,10 +71,10 @@ end
 % Plot: Original and Reconstructed Sparse Image
 fig1 = figure;
 t = tiledlayout(3, 3, 'TileSpacing', 'compact', 'Padding', 'compact'); % Create a tiled layout for displaying images
-nexttile; imshow(reshape(x_true, imageSize, imageSize), []); title('Original'); axis off; % Display the original image
+nexttile; imshow(reshape(x_true, imageSize, imageSize)); title('Original'); axis off; % Display the original image
 for i = 1:length(results)
     nexttile;
-    imshow(results{i}, []);             % Display the reconstructed image from each algorithm
+    imshow(results{i});             % Display the reconstructed image from each algorithm
     title(alg_names{i}, 'Interpreter', 'latex'); % Display the algorithm name as the title, using LaTeX for formatting
     axis off;                           % Turn off axis labels for cleaner visualization
 end
